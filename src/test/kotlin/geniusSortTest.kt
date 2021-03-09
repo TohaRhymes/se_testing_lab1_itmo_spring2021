@@ -12,7 +12,6 @@ class geniusSortTest() {
     fun testDescPosNegArraySort() {
         val A = longArrayOf(5, 1, 0, -1, -5)
         underTest.sort(A)
-        Assertions.assertTrue(A.sortedArray() contentEquals underTest.res)
         // intermidiate
         // [[-5], [], [0, -1], [1], [5]]
         Assertions.assertEquals(underTest.intermed_res?.get(0)?.size, 1)
@@ -25,6 +24,7 @@ class geniusSortTest() {
         Assertions.assertEquals(underTest.intermed_res?.get(3)?.get(0), 1)
         Assertions.assertEquals(underTest.intermed_res?.get(4)?.size, 1)
         Assertions.assertEquals(underTest.intermed_res?.get(4)?.get(0), 5)
+        Assertions.assertTrue(A.sortedArray() contentEquals underTest.res)
     }
 
 

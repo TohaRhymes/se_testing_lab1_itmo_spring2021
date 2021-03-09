@@ -1,25 +1,44 @@
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import tohaScenario.Event
 import tohaScenario.Person
 import tohaScenario.Thing
 
 class geniusScenarioTest {
 
-    companion object {
-        const val name = "Toha"
-        const val name2 = "Serge"
-        const val verb = "jump to"
-        const val thing_name = "switchers"
-        const val verb2 = "go to"
-        const val thing_name2 = "rockets"
-        val person = Person(name)
-        val person2 = Person(name2)
-        val thing = Thing(thing_name)
-        val thing2 = Thing(thing_name2)
-        val event = Event()
+    var name: String = ""
+    var name2: String = ""
+    var verb: String = ""
+    private var thing_name: String = ""
+    private var verb2: String = ""
+    private var thing_name2: String = ""
+    lateinit var person: Person
+    lateinit var person2: Person
+    lateinit var thing: Thing
+    lateinit var thing2: Thing
+    lateinit var event: Event
+    lateinit var ship: Thing
+    lateinit var engine: Thing
 
+    @BeforeEach
+    fun init() {
+        name = "Toha"
+        name2 = "Serge"
+        verb = "jump to"
+        thing_name = "switchers"
+        verb2 = "go to"
+        thing_name2 = "rockets"
+        person = Person(name)
+        person2 = Person(name2)
+        thing = Thing(thing_name)
+        thing2 = Thing(thing_name2)
+        event = Event()
+        ship = Thing("Корабль")
+        engine = Thing("мотор")
     }
+
 
     @Test
     fun testName() {
@@ -79,6 +98,14 @@ class geniusScenarioTest {
         Assertions.assertTrue(event.checkGuy(name2))
         Assertions.assertTrue(person2.checkAction(verb2, thing_name2))
 
+    }
+
+
+    @Test
+    fun TestSuperAction() {
+        ship.interact_between(engine, "трясло", "во всех направлениях")
+        Assertions.assertEquals(ship.interactions.first().first.first, "трясло")
+        Assertions.assertEquals(engine.interactions.first().first.first, "трясло")
     }
 
 

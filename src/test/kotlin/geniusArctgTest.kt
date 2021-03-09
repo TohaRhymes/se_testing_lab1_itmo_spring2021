@@ -16,6 +16,15 @@ class geniusArctgTest {
 
     @ParameterizedTest
     @CsvSource(
+        "-0.33, 0.01",
+    )
+    fun testStrange(x: Double, eps: Double) {
+        Assertions.assertEquals(atan(x), genius_arctg(x, eps), eps)
+    }
+
+
+    @ParameterizedTest
+    @CsvSource(
         "1.0, 0.01",
     )
     fun testRightBorder(x: Double, eps: Double) {
