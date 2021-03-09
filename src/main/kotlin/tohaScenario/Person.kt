@@ -9,7 +9,7 @@ class Person(fName: String) {
 
 
     fun commitAction(action:String, thing_name: String){
-        val thing: Thing = Thing(thing_name)
+        val thing = Thing(thing_name)
         val thingObj:Pair<String, Thing> = Pair(action, thing)
         this.actions.add(thingObj)
     }

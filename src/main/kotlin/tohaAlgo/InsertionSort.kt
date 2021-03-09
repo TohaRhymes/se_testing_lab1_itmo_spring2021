@@ -6,7 +6,7 @@ public class InsertionSort{
         for (j in 1 until arr.size){
             var i = j - 1;
             val processedValue = arr[j];
-            while ( (i >= 0) && (arr[i] > processedValue) ){
+            while ( (i >= 0) && (arr[i] < processedValue) ){
                 arr[i + 1] = arr[i];
                 i--;
             }
